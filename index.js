@@ -29,6 +29,17 @@ async function run() {
 
     const productCollections = client.db('techTitanDB').collection('ProductCollections')
 
+    app.get('/brand/:name', async(req, res) => {
+        const brand = req.params.name;
+        const query = { brand: brand };
+        const find = productCollections.find(query);
+        const result = await find.toArray();
+        res.send(result);
+        console.log(brand);
+    })
+
+    
+
     app.post('/products', async(req, res) => {
         const data = req.body;
         const result = await productCollections.insertOne(data);

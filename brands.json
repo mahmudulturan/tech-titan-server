@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "name": "Apple",
+    "logo": "https://i.ibb.co/w7f9Bky/apple-logo-transparent.png",
+    "advertisements": [
+      {
+        "slogan": "Think Different",
+        "offer": "Explore our latest products and innovations.",
+        "image": "https://i.ibb.co/CBrdzgL/Think-Different.jpg"
+      },
+      {
+        "slogan": "Designed to Inspire",
+        "offer": "Upgrade your tech experience with Apple.",
+        "image": "https://i.ibb.co/FXtX24b/Designed-to-Inspire.jpg"
+      },
+      {
+        "slogan": "Apple: Where Innovation Meets Style",
+        "offer": "Special discounts on select Apple devices.",
+        "image": "https://i.ibb.co/R7NwqQH/Apple-Where-Innovation-Meets-Style.jpg"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Samsung",
+    "logo": "https://i.ibb.co/5cTCVsv/Samsung-Logo-svg.png",
+    "advertisements": [
+      {
+        "slogan": "The Future of Possible",
+        "offer": "Discover the world of Samsung technology.",
+        "image": "https://i.ibb.co/KwD43zc/The-Future-of-Possible.jpg"
+      },
+      {
+        "slogan": "Innovate Your Life",
+        "offer": "Experience excellence with Samsung products.",
+        "image": "https://i.ibb.co/sgdtyVW/Samsung-Inspiring-the-World.jpg"
+      },
+      {
+        "slogan": "Samsung: Inspiring the World",
+        "offer": "Amazing deals on Samsung's top-rated devices.",
+        "image": "https://i.ibb.co/Yd8VGpJ/Innovate-Your-Life.jpg"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Sony",
+    "logo": "https://i.ibb.co/0j9dMSH/Sony-logo-svg.png",
+    "advertisements": [
+      {
+        "slogan": "Be Moved",
+        "offer": "Immerse yourself in Sony's audio and visual excellence.",
+        "image": "https://i.ibb.co/BNpWg7k/Be-Moved.jpg"
+      },
+      {
+        "slogan": "Experience Sony Quality",
+        "offer": "Upgrade your entertainment with Sony's innovations.",
+        "image": "https://i.ibb.co/JBc34X0/Sony-For-the-Love-of-Entertainment.jpg"
+      },
+      {
+        "slogan": "Sony: For the Love of Entertainment",
+        "offer": "Exclusive discounts on Sony products.",
+        "image": "https://i.ibb.co/T1dqgMs/Experience-Sony-Quality.jpg"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Google",
+    "logo": "https://i.ibb.co/cNp4cj8/Google-logo.png",
+    "advertisements": [
+      {
+        "slogan": "Make Google Do It",
+        "offer": "Explore the world of Google's apps and services.",
+        "image": "https://i.ibb.co/LPLT97B/Simplify-Your-Life.jpg"
+      },
+      {
+        "slogan": "Simplify Your Life",
+        "offer": "Unlock the potential of Google in your daily life.",
+        "image": "https://i.ibb.co/1KkZH2M/Make-Google-Do-It.jpg"
+      },
+      {
+        "slogan": "Google: Search, Explore, Innovate",
+        "offer": "Special offers on Google's smart devices.",
+        "image": "https://i.ibb.co/WF2B7bz/Google-Search-Explore-Innovate.jpg"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Xiaomi",
+    "logo": "https://i.ibb.co/Cz5k90c/Xiaomi-logo.png",
+    "advertisements": [
+      {
+        "slogan": "Innovation for Everyone",
+        "offer": "Discover Xiaomi's affordable yet powerful tech solutions.",
+        "image": "https://i.ibb.co/fYqBvNH/Innovation-for-Everyone-2.jpg"
+      },
+      {
+        "slogan": "Xiaomi: Smarter Living",
+        "offer": "Upgrade your lifestyle with Xiaomi's smart home products.",
+        "image": "https://i.ibb.co/0QBfzfD/Xiaomi-Smarter-Living.jpg"
+      },
+      {
+        "slogan": "Get More with Xiaomi",
+        "offer": "Big savings on Xiaomi's popular gadgets.",
+        "image": "https://i.ibb.co/gg0w5KV/Get-More-with-Xiaomi-2.jpg"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Intel",
+    "logo": "https://i.ibb.co/h7Gj1Vn/Intel-logo-2022.png",
+    "advertisements": [
+      {
+        "slogan": "Intel Inside",
+        "offer": "Power your devices with Intel's cutting-edge technology.",
+        "image": "https://i.ibb.co/jDHMgpb/Intel-Inside.jpg"
+      },
+      {
+        "slogan": "Innovate with Intel",
+        "offer": "Upgrade your computing experience with Intel processors.",
+        "image": "https://i.ibb.co/wg5nK5g/Intel-Technology-Unleashed.jpg"
+      },
+      {
+        "slogan": "Intel: Technology Unleashed",
+        "offer": "Special discounts on Intel-powered devices.",
+        "image": "https://i.ibb.co/wg5nK5g/Intel-Technology-Unleashed.jpg"
+      }
+    ]
+  }
+]

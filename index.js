@@ -53,6 +53,12 @@ app.get('/brands', (req, res) => {
     res.send(brands)
 })
 
+app.get('/brands/:id', (req, res) => {
+    const id = req.params.id;
+    const find = brands.find(brand => brand.id === parseFloat(id))
+    res.send(find)
+})
+
 app.listen(port, ()=> {
     console.log(`Tech Titan server is running on port: ${port}`);
 })

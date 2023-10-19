@@ -45,6 +45,16 @@ async function run() {
       res.send(result);
     });
 
+    app.get('/users/:email', async (req, res) => {
+      const email = req.params.email;
+      const filter = { email: email }
+      const result = await usersCollections.findOne(filter);
+      const products = await productCollections.find().toArray()
+      const itemID = result.cart;
+      const cartItems = products.filter(product => itemID.includes(product._id.toString()));
+      res.send(cartItems)
+    })
+
     app.post("/products", async (req, res) => {
       const data = req.body;
       const result = await productCollections.insertOne(data);
@@ -55,6 +65,22 @@ async function run() {
       const user = req.body;
       const result = await usersCollections.insertOne(user);
       res.send(result);
+    })
+
+    app.patch("/cart", async(req, res) => {
+      const body = req.body;
+      const filter = { email: body.email};
+      const options = { upsert: true };
+      const user = await usersCollections.findOne(filter)
+      const previousCart = user.cart;
+      const newCart = [...previousCart, body._id]
+      const updatedData = {
+        $set: {
+            cart: newCart,
+        }
+      }
+      const result = await usersCollections.updateOne(filter, updatedData, options)
+      res.send(result)
     })
 
     app.put("/products/:id", async (req, res) => {

@@ -28,7 +28,9 @@ async function run() {
     const productCollections = client
       .db("techTitanDB")
       .collection("ProductCollections");
-    const usersCollections  = client.db("techTitanDB").collection("UsersCollections")
+    const usersCollections = client
+      .db("techTitanDB")
+      .collection("UsersCollections");
 
     app.get("/brand/:name", async (req, res) => {
       const brand = req.params.name;
@@ -45,15 +47,17 @@ async function run() {
       res.send(result);
     });
 
-    app.get('/users/:email', async (req, res) => {
+    app.get("/users/:email", async (req, res) => {
       const email = req.params.email;
-      const filter = { email: email }
+      const filter = { email: email };
       const result = await usersCollections.findOne(filter);
-      const products = await productCollections.find().toArray()
+      const products = await productCollections.find().toArray();
       const itemID = result.cart;
-      const cartItems = products.filter(product => itemID.includes(product._id.toString()));
-      res.send(cartItems)
-    })
+      const cartItems = products.filter((product) =>
+        itemID.includes(product._id.toString())
+      );
+      res.send(cartItems);
+    });
 
     app.post("/products", async (req, res) => {
       const data = req.body;
@@ -61,27 +65,62 @@ async function run() {
       res.send(result);
     });
 
-    app.post("/users", async(req, res) => {
+    app.post("/users", async (req, res) => {
       const user = req.body;
       const result = await usersCollections.insertOne(user);
       res.send(result);
-    })
+    });
 
-    app.patch("/cart", async(req, res) => {
+    app.patch("/cart", async (req, res) => {
       const body = req.body;
-      const filter = { email: body.email};
+      const filter = { email: body.email };
       const options = { upsert: true };
-      const user = await usersCollections.findOne(filter)
+      const user = await usersCollections.findOne(filter);
+      const previousCart = user?.cart;
+      if (previousCart) {
+        const newCart = [...previousCart, body._id];
+        const updatedData = {
+          $set: {
+            cart: newCart,
+          },
+        };
+        const result = await usersCollections.updateOne(
+          filter,
+          updatedData,
+          options
+        );
+        res.send(result);
+      } 
+      else {
+        const newCart = [body._id];
+        const updatedData = {
+          $set: {
+            cart: newCart,
+          },
+        };
+        const result = await usersCollections.updateOne(
+          filter,
+          updatedData,
+          options
+        );
+        res.send(result);
+      }
+    });
+
+    app.patch("/cart/remove", async (req, res) => {
+      const body = req.body;
+      const filter = { email: body.email };
+      const user = await usersCollections.findOne(filter);
       const previousCart = user.cart;
-      const newCart = [...previousCart, body._id]
+      const newCart = previousCart.filter((item) => item !== body._id);
       const updatedData = {
         $set: {
-            cart: newCart,
-        }
-      }
-      const result = await usersCollections.updateOne(filter, updatedData, options)
-      res.send(result)
-    })
+          cart: newCart,
+        },
+      };
+      const result = await usersCollections.updateOne(filter, updatedData);
+      res.send(result);
+    });
 
     app.put("/products/:id", async (req, res) => {
       const id = req.params.id;
@@ -89,18 +128,19 @@ async function run() {
       const filter = { _id: new ObjectId(id) };
       const updatedData = {
         $set: {
-          name : data.name,
-          brand : data.brand,
-          type : data.type,
-          price : data.price,
-          rating : data.rating,
-          image : data.image,
-          detail : data.detail
-        }
+          name: data.name,
+          brand: data.brand,
+          type: data.type,
+          price: data.price,
+          rating: data.rating,
+          image: data.image,
+          detail: data.detail,
+        },
       };
       const result = await productCollections.updateOne(filter, updatedData);
-      res.send(result)
+      res.send(result);
     });
+
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log(

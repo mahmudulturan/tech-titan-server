@@ -28,6 +28,7 @@ async function run() {
     const productCollections = client
       .db("techTitanDB")
       .collection("ProductCollections");
+    const usersCollections  = client.db("techTitanDB").collection("UsersCollections")
 
     app.get("/brand/:name", async (req, res) => {
       const brand = req.params.name;
@@ -49,6 +50,12 @@ async function run() {
       const result = await productCollections.insertOne(data);
       res.send(result);
     });
+
+    app.post("/users", async(req, res) => {
+      const user = req.body;
+      const result = await usersCollections.insertOne(user);
+      res.send(result);
+    })
 
     app.put("/products/:id", async (req, res) => {
       const id = req.params.id;
